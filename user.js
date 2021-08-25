@@ -27,6 +27,10 @@ class user {
         this.birthYear = reqBody.birthYear
     }
 
+    userData(){
+        return [this.fname, this.lname, this.uname, this.pass, this.email, this.sex, this.birthMonth, this.birthDate, this.birthYear]
+    }
+
 
     /**
      * Returns true if 1) fname contains only characters 2) lname contains only characters
@@ -36,14 +40,6 @@ class user {
         return (/^[a-zA-Z]+$/.test(this.fname) && /^[a-zA-Z]+$/.test(this.lname))
     }
 
-    /**
-     *
-     * @param db
-     * @returns {boolean}
-     */
-    isUnameValid(db) {
-        return !dbquery.isUsername(db, this.uname)
-    }
 
     /**
      * Returns true if:
@@ -84,7 +80,7 @@ class user {
      * @returns {boolean|boolean}
      */
     isBirthYearValid() {
-        let num = Number(this.birthDate)
+        let num = Number(this.birthYear)
         let onlyNum = /^[0-9]+$/.test(this.birthDate)
         let validRange = num > 1900 && num < new Date().getFullYear()+1
         return (onlyNum && validRange)

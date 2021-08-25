@@ -13,22 +13,17 @@ const bodyParser = require("body-parser");
 const dbquery = require("./dbquery");
 const User = require('./user.js')
 const app = express()
-const mysql = require('mysql2');
 const port = 3000
 
-// create the connection to database
-const connection = mysql.createConnection({
-    host: '192.168.0.111',
-    user: 'root',
-    password: 'password',
-    database: 'Users'
-});
+
+
 
 // configure app
 app.use(require('sanitize').middleware);
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.set('view engine', 'ejs');
 
 // run app
 app.listen(port)
@@ -40,17 +35,32 @@ console.log("server listening at port " + port);
  */
 app.post('/registeruser', function(req,res){
     let user = new User(req.body);
-    // TODO validate responses with regex
-    dbquery.addUser(connection, user)
-    return res.redirect('signup_success.html');
+    let message = ""
+    // check for valid inputs
+    if (!user.isNameValid()) {message = "Invalid name"}
+    else if (!user.isPassValid()) {message = "Invalid password"}
+    else if (!user.isEmailValid()) {message = "Invalid email"}
+    else if (!user.isBirthDateValid()) {message = "Invalid birth date"}
+    else if (!user.isBirthYearValid()) {message = "Invalid birth year"}
+    // if a message was set input is invalid
+    if (message !== "") {
+        res.render('pages/register', {message: message});
+    }
+    //else redirect to confirmation
+    else {
+        dbquery.addUser(user.userData())
+        return res.redirect('signup_success.html');
+    }
 })
 
 /**
  * handles register page
  */
 app.get('/register',function(req,res){
-    res.set({'Access-control-Allow-Origin': '*'});
-    return res.redirect('registration.html');
+    let message = ""
+    res.render('pages/register', {
+        message: message
+    });
 })
 
 /**

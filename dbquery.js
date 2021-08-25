@@ -8,39 +8,31 @@
  * =====================================================================================================================
  */
 
-const User = require('./user.js')
+const mysql = require('mysql2');
+const connection = mysql.createConnection({
+    host: '192.168.0.111',
+    user: 'root',
+    password: 'password',
+    database: 'Users'
+});
+
 
 /**
  *
- * @param db
- * @param {User} user
+ * @param {Array} userdata
  */
-function addUser(db, user) {
+function addUser(userdata) {
+
     let sqlQuery = 'INSERT INTO users (fname, lname, uname, pass, email, sex, birthmonth, birthdate, birthyear) ' +
         'VALUES(?,?,?,?,?,?,?,?,?)';
-    let sqlData = [user.fname, user.lname, user.uname, user.pass, user.email, user.sex, user.birthMonth,
-        user.birthDate, user.birthYear]
-    console.log("begin query");
-    db.query(sqlQuery, sqlData,(error, results) => {
+    connection.query(sqlQuery, userdata,(error, results) => {
         if (error) throw error;
         console.log("Record inserted Successfully");
     });
 }
 
-/**
- * returns true if username in db
- * @param db
- * @param {string} uname username
- * @returns {boolean}
- */
-function isUsername(db, uname) {
-    let res = db.query("SELECT uname FROM users WHERE uname = '"+ uname +"'",(error, results) => {
-        if (error) throw error;
-        return (results.length !== 0)
-    });
-    return res
-}
+
 
 
 // export methods
-module.exports = { addUser, isUsername }
+module.exports = { addUser }

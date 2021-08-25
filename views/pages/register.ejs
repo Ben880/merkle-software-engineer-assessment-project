@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="styles.css">
-    <title>Register</title>
+    <%- include('../partials/head'); %>
 </head>
 <body>
 
-<div id="mainDiv" style="width: 220px; height: 250px;">
+<div id="mainDiv" style="width: 220px; height: 270px;">
 
     <div id="titleDiv">
         <p class="header">Register</p>
     </div>
     <hr class="marginless">
     <!-- ##########  begin page ############### -->
-    <br/>
+    <p id="invalidMessage"><%= message %>&nbsp;</p>
     <form name="register" method="POST" action="/registeruser">
         <input class="box" type="text" name="fname" id="fname" placeholder="First Name"  required/>
         <input class="box" type="text" name="lname" id="lname" placeholder="Last Name"  required/><br>
