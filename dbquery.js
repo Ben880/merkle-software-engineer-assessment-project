@@ -10,6 +10,11 @@
 
 const User = require('./user.js')
 
+/**
+ *
+ * @param db
+ * @param {User} user
+ */
 function addUser(db, user) {
     let sqlQuery = 'INSERT INTO users (fname, lname, uname, pass, email, sex, birthmonth, birthdate, birthyear) ' +
         'VALUES(?,?,?,?,?,?,?,?,?)';
@@ -22,6 +27,20 @@ function addUser(db, user) {
     });
 }
 
+/**
+ * returns true if username in db
+ * @param db
+ * @param {string} uname username
+ * @returns {boolean}
+ */
+function isUsername(db, uname) {
+    let res = db.query("SELECT uname FROM users WHERE uname = '"+ uname +"'",(error, results) => {
+        if (error) throw error;
+        return (results.length !== 0)
+    });
+    return res
+}
+
 
 // export methods
-module.exports = { addUser }
+module.exports = { addUser, isUsername }

@@ -38,10 +38,11 @@ class user {
 
     /**
      *
+     * @param db
      * @returns {boolean}
      */
-    isUnameValid() {
-        return true
+    isUnameValid(db) {
+        return !dbquery.isUsername(db, this.uname)
     }
 
     /**
