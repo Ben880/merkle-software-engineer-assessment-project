@@ -23,6 +23,5 @@ function addUser(db, user) {
 }
 
 
-
 // export methods
 module.exports = { addUser }
