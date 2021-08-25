@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Register</title>
+</head>
+<body>
+
+<div id="mainDiv" style="width: 220px; height: 250px;">
+
+    <div id="titleDiv">
+        <p class="header">Register</p>
+    </div>
+    <hr class="marginless">
+    <!-- ##########  begin page ############### -->
+    <br/>
+    <form name="register" method="POST" action="/registeruser">
+        <input class="box" type="text" name="fname" id="fname" placeholder="First Name"  required/>
+        <input class="box" type="text" name="lname" id="lname" placeholder="Last Name"  required/><br>
+        <input class="box" type="text" name="uname" id="uname" placeholder="Username"  required /><br>
+        <input class="box" type="text" name="pass" id="pass" placeholder="Password"  required /><br>
+        <input class="box" type="text" name="email" id="email" placeholder="Email"  required />
+        <label id="labelGender">Gender</label>
+        <select id="sex" name="sex">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+        </select><br>
+        <label id="labelBirthday">Birthday</label>
+        <select id="birthMonth" name="birthMonth">
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
+        <input class="box" type="text" name="birthDate" id="birthDate" placeholder="day"  required />
+        <input class="box" type="text" name="birthYear" id="birthYear" placeholder="year"  required />
+        <br>
+        <input type="submit" id="submitDetails" name="submitDetails" value="Submit" />
+    </form>
+</div>
+</body>
+</html>
