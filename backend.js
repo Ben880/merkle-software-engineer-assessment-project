@@ -35,12 +35,17 @@ app.post('/registeruser', function(req,res){
     let message = ""
     // check for valid inputs
     if (!user.isNameValid()) {message = "Invalid name"}
+    else if (!user.isAddr1Valid()) {message = "Invalid address 1"}
+    else if (!user.isAddr2Valid()) {message = "Invalid address 2"}
+    else if (!user.isCityValid()) {message = "Invalid city"}
+    else if (!user.isZipValid()) {message = "Invalid zip code"}
     // if there is a message send error message
     if (message !== "") {
         res.render('pages/register', {message: message, user: user});
     // else check uname and register
     } else {
         dbquery.addUser(user.userData(), user.userDBString())
+        res.render('pages/register_success');
     }
 })
 

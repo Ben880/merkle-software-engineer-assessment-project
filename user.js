@@ -60,6 +60,29 @@ class user {
         return (/^[a-zA-Z]+$/.test(this.fname) && /^[a-zA-Z]+$/.test(this.lname));
     }
 
+    /**
+     * returns tru if has 3 parts addr# street name and street type
+     * @returns {boolean}
+     */
+    isAddr1Valid() {
+        return (/^\s*\S+(?:\s+\S+){2}/.test(this.addr1))
+    }
+
+    /**
+     * returns true, if matches 'APT. ###'
+     * @returns {boolean}
+     */
+    isAddr2Valid() {
+        return (/^APT ((?<= )\d*)/.test(this.addr2) || this.addr2 === "")
+    }
+
+    isCityValid() {
+        return (/^([a-zA-Z 0-9_-]){3,100}$/.test(this.city))
+    }
+
+    isZipValid() {
+        return (/^[0-9]{5}(?:-[0-9]{4})?$/.test(this.zip))
+    }
 
 }
 
