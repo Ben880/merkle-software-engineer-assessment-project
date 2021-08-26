@@ -100,41 +100,21 @@ input{
 	width: 80px;
 }
 
-#labelGender {
+#city, #zip {
+	width: 120px;
 	float: left;
-	margin-left: 15px;
-	margin-right: 100px;
-	padding: 0px;
 }
 
-#sex{
+#state, #country {
 	float: left;
-	margin-left: 15px;
+	margin-left: 1px;
 	height: 21px;
+	width: 48px;
 }
 
-#labelBirthday {
-	float:  left;
-	margin-left: 15px;
-	margin-right: 100px;
-}
-
-#birthMonth {
+#submitDetails {
 	float: left;
 	margin-left: 15px;
-	height: 21px;
-}
-
-#birthDate {
-	float: left;
-	width: 25px;
-	margin-left: 0px;
-}
-
-#birthYear {
-	float: left;
-	width: 45px;
-	margin-left: 0px;
 }
 
 #invalidMessage {

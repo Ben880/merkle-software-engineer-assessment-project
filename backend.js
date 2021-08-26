@@ -35,16 +35,12 @@ app.post('/registeruser', function(req,res){
     let message = ""
     // check for valid inputs
     if (!user.isNameValid()) {message = "Invalid name"}
-    else if (!user.isPassValid()) {message = "Invalid password"}
-    else if (!user.isEmailValid()) {message = "Invalid email"}
-    else if (!user.isBirthDateValid()) {message = "Invalid birth date"}
-    else if (!user.isBirthYearValid()) {message = "Invalid birth year"}
     // if there is a message send error message
     if (message !== "") {
-        res.render('pages/register', {message: message});
+        res.render('pages/register', {message: message, user: user});
     // else check uname and register
     } else {
-        dbquery.registerUser(user, res)
+        dbquery.addUser(user.userData(), user.userDBString())
     }
 })
 
@@ -53,9 +49,8 @@ app.post('/registeruser', function(req,res){
  */
 app.get('/register',function(req,res){
     let message = ""
-    res.render('pages/register', {
-        message: message
-    });
+    let user = new User(null);
+    res.render('pages/register', {message: message, user: user});
 })
 
 /**

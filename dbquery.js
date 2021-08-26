@@ -22,32 +22,12 @@ const connection = mysql.createConnection({
  * @param {String} userDBString name of columns to insert array into
  */
 function addUser(userdata, userDBString) {
-    let sqlQuery = 'INSERT INTO users ('+ userDBString +') ' + 'VALUES(?,?,?,?,?,?,?,?,?)';
+    let sqlQuery = 'INSERT INTO users ('+ userDBString +') ' + 'VALUES(?,?,?,?,?,?,?,?)';
     connection.query(sqlQuery, userdata,(error, results) => {
         if (error) throw error;
         console.log("Record inserted Successfully");
     });
 }
 
-/**
- * checks if username taken and registers them, gives error message if not taken
- * @param {user} user user class
- * @param {Response<ResBody, Locals>} res
- */
-function registerUser(user, res) {
-        connection.query("SELECT uname FROM users WHERE uname = '"+ user.uname +"'",(error, results) => {
-            if (error) throw error;
-            if (results.length === 0) {
-                console.log("res = 0 " + user.uname)
-                addUser(user.userData())
-                return res.redirect('signup_success.html');
-            } else {
-                console.log("res > 0")
-                let message = "Username taken"
-                return res.render('pages/register', {message: message});
-            }
-        });
-}
-
 // export methods
-module.exports = { registerUser }
+module.exports = { addUser }

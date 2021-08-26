@@ -1,0 +1,35 @@
+<form name="register" method="POST" action="/registeruser">
+    <input class="box" type="text" name="fname" id="fname" placeholder="First Name" value="<%= user.fname %>" autofocus required/>
+    <input class="box" type="text" name="lname" id="lname" placeholder="Last Name" value="<%= user.lname %>" required/><br>
+    <input class="box" type="text" name="addr1" id="addr1" placeholder="Address 1" value="<%= user.addr1 %>" required /><br>
+    <input class="box" type="text" name="addr2" id="addr2" placeholder="Address 2" value="<%= user.addr2 %>" required /><br>
+    <input class="box" type="text" name="city" id="city" placeholder="City" value="<%= user.city %>" required />
+    <select id="state" name="state">
+        <%
+        var states = [
+            'AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
+            'GU','HI','ID','IL','IN','IA','KS','KY','LA','ME','MH','MD','MA',
+            'MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND',
+            'MP','OH','OK','OR','PW','PA','PR','RI','SC','SD','TN','TX','UT',
+            'VT','VI','VA','WA','WV','WI','WY'
+        ];
+        for ( var i = 0; i < states.length; i++ )
+        {
+            var selected = ( user.state == i ) ? "selected" : "";
+        %><option value="<%=states[ i ] %>" <%=selected %>><%=states[i] %></option><%
+        }
+        %>
+    </select>
+    <input class="box" type="number" name="zip" id="zip" placeholder="Zip Code" value="<%= user.zip %>" required />
+    <select id="country" name="country">
+        <%
+        var country = ['US'];
+        for ( var i = 0; i < country.length; i++ )
+        {
+            var selected = ( user.country == i ) ? "selected" : "";
+        %><option value="<%=country[ i ] %>" <%=selected %>><%=country[i] %></option><%
+        }
+        %>
+    </select><br>
+    <input type="submit" id="submitDetails" name="submitDetails" value="Submit" />
+</form>
