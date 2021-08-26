@@ -8,8 +8,6 @@
  * =====================================================================================================================
  */
 
-const dbquery = require("./dbquery");
-
 /**
  * User data structure
  * variables are made not private for simplicity
@@ -27,17 +25,28 @@ class user {
         this.birthYear = reqBody.birthYear
     }
 
-    userData(){
-        return [this.fname, this.lname, this.uname, this.pass, this.email, this.sex, this.birthMonth, this.birthDate, this.birthYear]
+    /**
+     * returns array of data in order of database insertion
+     * @returns {*[]}
+     */
+    userData() {
+        return [this.fname, this.lname, this.uname, this.pass, this.email, this.sex, this.birthMonth, this.birthDate, this.birthYear];
     }
 
+    /**
+     * return string of db column names
+     * @returns {string}
+     */
+    userDBString() {
+        return "fname, lname, uname, pass, email, sex, birthmonth, birthdate, birthyear"
+    }
 
     /**
      * Returns true if 1) fname contains only characters 2) lname contains only characters
      * @returns {boolean}
      */
     isNameValid() {
-        return (/^[a-zA-Z]+$/.test(this.fname) && /^[a-zA-Z]+$/.test(this.lname))
+        return (/^[a-zA-Z]+$/.test(this.fname) && /^[a-zA-Z]+$/.test(this.lname));
     }
 
 
@@ -51,7 +60,7 @@ class user {
      * @returns {boolean}
      */
     isPassValid() {
-        return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(this.pass)
+        return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(this.pass);
     }
 
     /**
@@ -60,7 +69,7 @@ class user {
      * @returns {boolean}
      */
     isEmailValid() {
-        const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+        const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
         return re.test(String(this.email).toLowerCase());
     }
 
@@ -69,10 +78,10 @@ class user {
      * @returns {boolean|boolean}
      */
     isBirthDateValid() {
-        let num = Number(this.birthDate)
-        let onlyNum = /^[0-9]+$/.test(this.birthDate)
-        let validRange = num > 0 && num < 32
-        return (onlyNum && validRange)
+        let num = Number(this.birthDate);
+        let onlyNum = /^[0-9]+$/.test(this.birthDate);
+        let validRange = num > 0 && num < 32;
+        return (onlyNum && validRange);
     }
 
     /**
@@ -80,14 +89,12 @@ class user {
      * @returns {boolean|boolean}
      */
     isBirthYearValid() {
-        let num = Number(this.birthYear)
-        let onlyNum = /^[0-9]+$/.test(this.birthDate)
-        let validRange = num > 1900 && num < new Date().getFullYear()+1
-        return (onlyNum && validRange)
+        let num = Number(this.birthYear);
+        let onlyNum = /^[0-9]+$/.test(this.birthDate);
+        let validRange = num > 1900 && num < new Date().getFullYear()+1;
+        return (onlyNum && validRange);
     }
-
 }
 
-
 // export class
-module.exports = user
+module.exports = user;

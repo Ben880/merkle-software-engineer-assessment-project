@@ -13,34 +13,34 @@
     <!-- ##########  begin page ############### -->
     <p id="invalidMessage"><%= message %>&nbsp;</p>
     <form name="register" method="POST" action="/registeruser">
-        <input class="box" type="text" name="fname" id="fname" placeholder="First Name"  required/>
-        <input class="box" type="text" name="lname" id="lname" placeholder="Last Name"  required/><br>
-        <input class="box" type="text" name="uname" id="uname" placeholder="Username"  required /><br>
-        <input class="box" type="text" name="pass" id="pass" placeholder="Password"  required /><br>
-        <input class="box" type="text" name="email" id="email" placeholder="Email"  required />
+        <input class="box" type="text" name="fname" id="fname" placeholder="First Name" value="<%=fname%>"  required/>
+        <input class="box" type="text" name="lname" id="lname" placeholder="Last Name" value="<%=lname%>" required/><br>
+        <input class="box" type="text" name="uname" id="uname" placeholder="Username" value="<%=uname%>" required /><br>
+        <input class="box" type="text" name="pass" id="pass" placeholder="Password" value="<%=pass%>" required /><br>
+        <input class="box" type="text" name="email" id="email" placeholder="Email" value="<%=email%>" required />
         <label id="labelGender">Gender</label>
-        <select id="sex" name="sex">
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-            <option value="O">Other</option>
+        <select id="sex" name="sex" >
+            <option value="M" <%=sex1%>>Male</option>
+            <option value="F" <%=sex2%>>Female</option>
+            <option value="O" <%=sex3%>>Other</option>
         </select><br>
         <label id="labelBirthday">Birthday</label>
         <select id="birthMonth" name="birthMonth">
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option value="April">April</option>
-            <option value="May">May</option>
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
+            <option value="January" <%=month1%>>January</option>
+            <option value="February" <%=month2%>>February</option>
+            <option value="March" <%=month3%>>March</option>
+            <option value="April" <%=month4%>>April</option>
+            <option value="May" <%=month5%>>May</option>
+            <option value="June" <%=month6%>>June</option>
+            <option value="July" <%=month7%>>July</option>
+            <option value="August" <%=month8%>>August</option>
+            <option value="September" <%=month9%>>September</option>
+            <option value="October" <%=month10%>>October</option>
+            <option value="November" <%=month11%>>November</option>
+            <option value="December" <%=month12%>>December</option>
         </select>
-        <input class="box" type="text" name="birthDate" id="birthDate" placeholder="day"  required />
-        <input class="box" type="text" name="birthYear" id="birthYear" placeholder="year"  required />
+        <input class="box" type="text" name="birthDate" id="birthDate" placeholder="day" value="<%=birthDate%>" required />
+        <input class="box" type="text" name="birthYear" id="birthYear" placeholder="year" value="<%=birthYear%>" required />
         <br>
         <input type="submit" id="submitDetails" name="submitDetails" value="Submit" />
     </form>

@@ -15,9 +15,6 @@ const User = require('./user.js')
 const app = express()
 const port = 3000
 
-
-
-
 // configure app
 app.use(require('sanitize').middleware);
 app.use(bodyParser.json());
@@ -42,14 +39,12 @@ app.post('/registeruser', function(req,res){
     else if (!user.isEmailValid()) {message = "Invalid email"}
     else if (!user.isBirthDateValid()) {message = "Invalid birth date"}
     else if (!user.isBirthYearValid()) {message = "Invalid birth year"}
-    // if a message was set input is invalid
+    // if there is a message send error message
     if (message !== "") {
         res.render('pages/register', {message: message});
-    }
-    //else redirect to confirmation
-    else {
-        dbquery.addUser(user.userData())
-        return res.redirect('signup_success.html');
+    // else check uname and register
+    } else {
+        dbquery.registerUser(user, res)
     }
 })
 
