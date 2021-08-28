@@ -115,6 +115,7 @@ input{
 #submitDetails {
 	float: left;
 	margin-left: 15px;
+	margin-right: 100%;
 }
 
 #invalidMessage {
@@ -124,4 +125,8 @@ input{
 	color: red;
 	margin-bottom: 0px;
 	margin-top: 0px;
+}
+
+#formDiv {
+	height: 140px;
 }

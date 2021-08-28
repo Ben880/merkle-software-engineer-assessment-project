@@ -32,22 +32,26 @@ console.log("server listening at port " + port);
  */
 app.post('/registeruser', function(req,res){
     let user = new User(req.body);
-    let message = ""
     // check for valid inputs
-    if (!user.isNameValid()) {message = "Invalid name"}
-    else if (!user.isAddr1Valid()) {message = "Invalid address 1"}
-    else if (!user.isAddr2Valid()) {message = "Invalid address 2"}
-    else if (!user.isCityValid()) {message = "Invalid city"}
-    else if (!user.isZipValid()) {message = "Invalid zip code"}
-    // if there is a message send error message
-    if (message !== "") {
-        res.render('pages/register', {message: message, user: user});
-    // else check uname and register
-    } else {
+    if (!user.isNameValid()) {formError(res, user, "Invalid name")}
+    else if (!user.isAddr1Valid()) {formError(res, user, "Invalid address")}
+    else if (!user.isCityValid()) {formError(res, user, "Invalid city")}
+    else if (!user.isZipValid()) {formError(res, user, "Invalid zip code")}
+    else if (!user.isStateValid()) {formError(res, user, "Invalid state")}
+    else if (!user.isCountryValid()) {formError(res, user, "Invalid country")}
+    else {
         dbquery.addUser(user.userData(), user.userDBString())
         res.render('pages/register_success');
     }
 })
+
+/**
+ * sets an error and renders the page
+ * @param message {string}
+ */
+function formError(res, user, message) {
+    res.render('pages/register', {message: message, user: user});
+}
 
 /**
  * handles register page

@@ -1,5 +1,7 @@
+<br>
+<div id="formDiv">
 <form name="register" method="POST" action="/registeruser">
-    <input class="box" type="text" name="fname" id="fname" placeholder="First Name" value="<%= user.fname %>" autofocus required/>
+    <input class="box" type="text" name="fname" id="fname" placeholder="First Name" value="<%= user.fname %>" autofocus required />
     <input class="box" type="text" name="lname" id="lname" placeholder="Last Name" value="<%= user.lname %>" required/><br>
     <input class="box" type="text" name="addr1" id="addr1" placeholder="Address 1" value="<%= user.addr1 %>" required /><br>
     <input class="box" type="text" name="addr2" id="addr2" placeholder="Address 2" value="<%= user.addr2 %>" /><br>
@@ -33,3 +35,6 @@
     </select><br>
     <input type="submit" id="submitDetails" name="submitDetails" value="Submit" />
 </form>
+</div>
+<p id="invalidMessage"><%= message %>&nbsp;</p>
+<script type="text/javascript" src="formEvents.js"></script>

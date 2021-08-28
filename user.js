@@ -53,37 +53,126 @@ class user {
     }
 
     /**
-     * Returns true if 1) fname contains only characters 2) lname contains only characters
+     * Returns true if fname and lname !isEmptyCheck && isLettersOnlyCheck
      * @returns {boolean}
      */
     isNameValid() {
-        return (/^[a-zA-Z]+$/.test(this.fname) && /^[a-zA-Z]+$/.test(this.lname));
+        return (
+            !this.isEmptyCheck(this.fname) && !this.isEmptyCheck(this.lname) &&
+            this.isLettersOnlyCheck(this.fname) && this.isLettersOnlyCheck(this.lname)
+        )
     }
 
     /**
-     * returns tru if has 3 parts addr# street name and street type
+     * returns true if !isEmptyCheck && isThereALetterCheck && isThereANumberCheck
      * @returns {boolean}
      */
     isAddr1Valid() {
-        return (/^\s*\S+(?:\s+\S+){2}/.test(this.addr1))
+        return (
+            !this.isEmptyCheck(this.addr1) && this.isThereALetterCheck(this.addr1) &&
+            this.isThereANumberCheck(this.addr1)
+        )
     }
 
     /**
-     * returns true, if matches 'APT. ###'
+     * returns true if !isEmptyCheck && isLettersOnlyCheck
      * @returns {boolean}
      */
-    isAddr2Valid() {
-        return (/^APT ((?<= )\d*)/.test(this.addr2) || this.addr2 === "")
-    }
-
     isCityValid() {
-        return (/^([a-zA-Z 0-9_-]){3,100}$/.test(this.city))
+        return (
+            !this.isEmptyCheck(this.city) && this.isLettersOnlyCheck(this.city)
+        )
     }
 
+    /**
+     * returns true if isNumbersOnlyCheck && isZipLenCheck
+     * @returns {boolean|boolean}
+     */
     isZipValid() {
-        return (/^[0-9]{5}(?:-[0-9]{4})?$/.test(this.zip))
+        return (
+            this.isNumbersOnlyCheck(this.zip) && this.isZipLenCheck(this.zip)
+        )
     }
 
+    /**
+     * returns true if matches a state
+     * @returns {boolean}
+     */
+    isStateValid () {
+        var states = [
+            'AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
+            'GU','HI','ID','IL','IN','IA','KS','KY','LA','ME','MH','MD','MA',
+            'MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND',
+            'MP','OH','OK','OR','PW','PA','PR','RI','SC','SD','TN','TX','UT',
+            'VT','VI','VA','WA','WV','WI','WY'
+        ];
+        return states.includes(this.state)
+    }
+
+    /**
+     * returns true if country is US
+     * @returns {boolean}
+     */
+    isCountryValid() {
+        return (this.country === "US")
+    }
+
+
+    // checks
+    /**
+     * return true if testStr contains at least 1 letter
+     * @param testStr {string} string to test
+     * @returns {boolean}
+     */
+    isThereALetterCheck(testStr) {
+        return /.*[a-zA-Z].*/.test(testStr)
+    }
+
+    /**
+     * return true if testStr contains at least 1 number
+     * @param testStr {string} string to test
+     * @returns {boolean}
+     */
+    isThereANumberCheck(testStr) {
+        return /.*[0-9].*/.test(testStr)
+    }
+
+    /**
+     * return true if testStr is length 5 or 9
+     * @param testStr {string} string to test
+     * @returns {boolean}
+     */
+    isZipLenCheck(testStr) {
+        let len = testStr.length
+        return len === 5 || len === 9
+    }
+
+    /**
+     * return true if testStr contains only numbers
+     * @param testStr {string} string to test
+     * @returns {boolean}
+     */
+    isNumbersOnlyCheck(testStr) {
+        return /^\d+$/.test(testStr)
+    }
+
+    /**
+     * return true if testStr is length 0
+     * @param testStr {string} string to test
+     * @returns {boolean}
+     */
+    isEmptyCheck(testStr) {
+        return testStr.length === 0
+    }
+
+    /**
+     * return true if testStr contains only letters
+     * @param testStr {string} string to test
+     * @returns {boolean}
+     */
+    isLettersOnlyCheck(testStr) {
+        return /^[a-zA-Z\s]+$/.test(testStr)
+    }
 }
 
 // export class
