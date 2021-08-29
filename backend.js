@@ -46,8 +46,10 @@ app.post('/registeruser', function(req,res){
 })
 
 /**
- * sets an error and renders the page
- * @param message {string}
+ * sets an error and renders the form page
+ * @param res {Response} response variable to register form page with error message
+ * @param user {user} user data structure
+ * @param message {string} error message to display
  */
 function formError(res, user, message) {
     res.render('pages/register', {message: message, user: user});
@@ -57,24 +59,33 @@ function formError(res, user, message) {
  * handles register page
  */
 app.get('/register',function(req,res){
-    let message = ""
-    let user = new User(null);
-    res.render('pages/register', {message: message, user: user});
+    res.render('pages/register', {message: "", user: new User(null)});
 })
 
 /**
  * handles login forum
  */
 app.post('/adminlogin', function(req,res){
-    // TODO: Logic
-    return res.redirect('admin.html');
+    dbquery.adminLogin(res,req, adminResponse);
 })
 
 /**
  * handles admin page
  */
 app.get('/admin',function(req,res){
-    res.set({'Access-control-Allow-Origin': '*'});
-    return res.redirect('admin.html');
+    return res.render('pages/admin', {message: ""});
 })
+
+
+function adminResponse(response, request, results) {
+    let redirect =
+    Object.keys(results).forEach(function(key) {
+        let row = results[key];
+        if (row.uname === request.body.user && row.pass === request.body.pass) {
+            return response.render('pages/display_users')
+        }
+    });
+    if (!response.headersSent)
+        return response.render('pages/admin', {message: "Invalid username or password"});
+}
 

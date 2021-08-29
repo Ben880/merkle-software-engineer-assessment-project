@@ -1,51 +1,41 @@
 @charset "ISO-8859-1";
 
-html {
-	height: auto;
+html, body {
+	min-height: 100%;
+	min-width: 100%;
 }
 
 body {
-	background: linear-gradient(#00329B, #96B4D2);
+	background: linear-gradient(#F0F2F5, #96B4D2);
 	background-repeat: no-repeat;
-	height: 1000px;
 }
 
 #mainDiv {
 	text-align: center;
-	background-color: #96B4D2;
+	background-color: #FEFFFF;
 	margin-left: auto;
 	margin-right: auto;
-	width: 300px;
-	margin-top: 100px;
+	margin-top: 200px;
 	margin-bottom: auto;
-	height: auto;
+	border-radius: 20px;
 }
 
-table {
-	background: #96B4D2;
-	border-collapse: collapse;
+.register {
+	height: 450px;
+	width: 350px;
 }
 
-tr {
-
+.admin {
+	height: 280px;
+	width: 350px;
 }
 
-th {
-	text-align: left;
-	border: 0px solid black;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 3px;
-	padding-bottom: 3px;
-}
-
-.thAlignRight {
-	text-align: right;
-	border: 0px solid black;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 3px;
-	padding-bottom: 3px;
+.box {
+	height: 30px;
+	width: 280px;
+	margin-left: 30px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 hr {
@@ -59,7 +49,7 @@ hr {
 	padding-left: 15px;
 	padding-right: 15px;
 	padding-top: 15px;
-	padding-bottom: 0px;
+	padding-bottom: 15px;
 	margin-bottom: 0px;
 }
 
@@ -79,7 +69,8 @@ hr {
 #titleDiv {
 	margin-left: 0px;
 	padding-left: 0px;
-	background: #357cc4;
+	background: #DFE1E5;
+	border-radius: 20px 20px 0px 0px;
 }
 
 input {
@@ -92,41 +83,53 @@ input{
 }
 
 #fname {
-	width: 80px;
+	width: 130px;
+
 }
 
 #lname {
-	margin-left: 1px;
-	width: 80px;
+	margin-left: 12px;
+	width: 130px;
 }
 
 #city, #zip {
-	width: 120px;
+	width: 200px;
 	float: left;
 }
 
 #state, #country {
 	float: left;
-	margin-left: 1px;
-	height: 21px;
-	width: 48px;
+	margin-left: 12px;
+	height: 36px;
+	width: 68px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 #submitDetails {
-	float: left;
-	margin-left: 15px;
-	margin-right: 100%;
+	float: right;
+	margin-left: 30px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 30px;
+	height: 36px;
+	width: 68px;
 }
 
 #invalidMessage {
-	padding: 0px;
-	margin-left: 15px;
-	text-align: left;
+	font-size: 20px;
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: center;
 	color: red;
-	margin-bottom: 0px;
-	margin-top: 0px;
 }
 
-#formDiv {
-	height: 140px;
+#rformDiv {
+	height: 300px;
+}
+
+#aformDiv {
+	height: 150px;
 }

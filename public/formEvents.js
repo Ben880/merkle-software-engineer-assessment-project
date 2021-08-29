@@ -175,5 +175,3 @@ function isLettersOnlyCheck(elementId) {
     return /^[a-zA-Z\s]+$/.test(document.getElementById(elementId).value)
 }
 
-
-export {isLettersOnlyCheck, isEmptyCheck, isNumbersOnlyCheck, isZipLenCheck, isThereANumberCheck, isThereALetterCheck}

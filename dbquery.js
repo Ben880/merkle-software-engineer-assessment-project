@@ -29,5 +29,21 @@ function addUser(userdata, userDBString) {
     });
 }
 
+function getTable(response, request, responseFunction) {
+    let sqlQuery = "SELECT * FROM users";
+    connection.query(sqlQuery, (error, results) => {
+        console.log(results)
+        responseFunction(response, request, results);
+    });
+}
+
+function adminLogin(response, request, responseFunction) {
+    let sqlQuery = "SELECT * FROM admin";
+    connection.query(sqlQuery, (error, results) => {
+        console.log(results)
+        responseFunction(response, request, results);
+    });
+}
+
 // export methods
-module.exports = { addUser }
+module.exports = { addUser, getTable, adminLogin }
