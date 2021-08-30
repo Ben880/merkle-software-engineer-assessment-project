@@ -1,0 +1,13 @@
+{
+  "name": "merkle-software-engineer-assessment-project",
+  "version": "1.0.0",
+  "description": "merkle assessment project",
+  "author": "Benjamin Wilcox <bwilcox@ltu.edu>",
+  "main": "backend.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
