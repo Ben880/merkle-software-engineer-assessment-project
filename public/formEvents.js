@@ -80,7 +80,7 @@ function checkIssues () {
         return setIssue(NAME_SPECIALCHAR);
     // address
     if (currentElement === ADDRESS1)
-        return clearIssue()
+        return clearIssue();
     if (isEmptyCheck(ADDRESS1))
         return setIssue(ADDR1_EMPTY);
     if (!isThereALetterCheck(ADDRESS1))
@@ -89,21 +89,21 @@ function checkIssues () {
         return setIssue(ADDR1_ADDR);
     // city
     if (currentElement === CITY || currentElement === ADDRESS2)
-        return clearIssue()
+        return clearIssue();
     if (isEmptyCheck(CITY))
       return setIssue(CITY_EMPTY);
     if (!isLettersOnlyCheck(CITY))
         return setIssue(CITY_SPECIALCHAR);
     // zip check
     if (currentElement === ZIP || currentElement === STATE)
-        return clearIssue()
+        return clearIssue();
     if (isEmptyCheck(ZIP))
         return setIssue(ZIP_EMPTY);
     if (!isNumbersOnlyCheck(ZIP))
         return setIssue(ZIP_NUMBERS);
     if (!isZipLenCheck(ZIP))
-        return setIssue(ZIP_LEN)
-    clearIssue()
+        return setIssue(ZIP_LEN);
+    clearIssue();
 }
 
 /**
@@ -126,7 +126,7 @@ function clearIssue() {
  * @returns {boolean}
  */
 function isThereALetterCheck(elementId) {
-    return /.*[a-zA-Z].*/.test(document.getElementById(elementId).value)
+    return /.*[a-zA-Z].*/.test(document.getElementById(elementId).value);
 }
 
 /**
@@ -135,7 +135,7 @@ function isThereALetterCheck(elementId) {
  * @returns {boolean}
  */
 function isThereANumberCheck(elementId) {
-    return /.*[0-9].*/.test(document.getElementById(elementId).value)
+    return /.*[0-9].*/.test(document.getElementById(elementId).value);
 }
 
 /**
@@ -144,8 +144,8 @@ function isThereANumberCheck(elementId) {
  * @returns {boolean}
  */
 function isZipLenCheck(elementId) {
-    let len = document.getElementById(elementId).value.length
-    return len === 5 || len === 9
+    let len = document.getElementById(elementId).value.length;
+    return len === 5 || len === 9;
 }
 
 /**
@@ -154,7 +154,7 @@ function isZipLenCheck(elementId) {
  * @returns {boolean}
  */
 function isNumbersOnlyCheck(elementId) {
-    return /^\d+$/.test(document.getElementById(elementId).value)
+    return /^\d+$/.test(document.getElementById(elementId).value);
 }
 
 /**
@@ -163,7 +163,7 @@ function isNumbersOnlyCheck(elementId) {
  * @returns {boolean}
  */
 function isEmptyCheck(elementId) {
-    return document.getElementById(elementId).value.length === 0
+    return document.getElementById(elementId).value.length === 0;
 }
 
 /**
@@ -172,6 +172,6 @@ function isEmptyCheck(elementId) {
  * @returns {boolean}
  */
 function isLettersOnlyCheck(elementId) {
-    return /^[a-zA-Z\s]+$/.test(document.getElementById(elementId).value)
+    return /^[a-zA-Z\s]+$/.test(document.getElementById(elementId).value);
 }
 

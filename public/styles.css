@@ -22,6 +22,25 @@ body {
 	border-width: 1px;
 	border-color: black;
 }
+.userTable{
+	margin: 10px;
+}
+
+.userTable,  .userTable tr, .userTable th{
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+.userTable tr, .userTable th {
+	padding-bottom: 0px;
+	padding-left: 4px;
+	padding-right: 4px;
+	padding-top: 0px;
+}
+
+.userTable thead {
+	background-color: #DFE1E5;
+}
 
 @media (min-height: 300px) {
 	#mainDiv {
@@ -55,6 +74,32 @@ body {
 .admin {
 	height: 280px;
 	width: 350px;
+}
+
+.displayUsers {
+	height: 100%;
+}
+
+@media (min-width: 700px) {
+	.displayUsers {
+		width: 800px;
+	}
+}
+
+@media (min-width: 1000px) {
+	.displayUsers {
+		width: 900px;
+	}
+}
+
+@media (min-width: 1400px) {
+	.displayUsers {
+		width: 1250px;
+	}
+	.userTable {
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
 .box {

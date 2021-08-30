@@ -32,7 +32,6 @@ function addUser(userdata, userDBString) {
 function getTable(response, request, responseFunction) {
     let sqlQuery = "SELECT * FROM users";
     connection.query(sqlQuery, (error, results) => {
-        console.log(results)
         responseFunction(response, request, results);
     });
 }
@@ -40,7 +39,6 @@ function getTable(response, request, responseFunction) {
 function adminLogin(response, request, responseFunction) {
     let sqlQuery = "SELECT * FROM admin";
     connection.query(sqlQuery, (error, results) => {
-        console.log(results)
         responseFunction(response, request, results);
     });
 }

@@ -11,9 +11,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const dbquery = require("./dbquery");
-const User = require('./user.js')
-const app = express()
-const port = 3000
+const User = require('./user.js');
+const app = express();
+const port = 3000;
 
 // configure app
 app.use(require('sanitize').middleware);
@@ -33,12 +33,12 @@ console.log("server listening at port " + port);
 app.post('/registeruser', function(req,res){
     let user = new User(req.body);
     // check for valid inputs
-    if (!user.isNameValid()) {formError(res, user, "Invalid name")}
-    else if (!user.isAddr1Valid()) {formError(res, user, "Invalid address")}
-    else if (!user.isCityValid()) {formError(res, user, "Invalid city")}
-    else if (!user.isZipValid()) {formError(res, user, "Invalid zip code")}
-    else if (!user.isStateValid()) {formError(res, user, "Invalid state")}
-    else if (!user.isCountryValid()) {formError(res, user, "Invalid country")}
+    if (!user.isNameValid()) {formError(res, user, "Invalid name");}
+    else if (!user.isAddr1Valid()) {formError(res, user, "Invalid address");}
+    else if (!user.isCityValid()) {formError(res, user, "Invalid city");}
+    else if (!user.isZipValid()) {formError(res, user, "Invalid zip code");}
+    else if (!user.isStateValid()) {formError(res, user, "Invalid state");}
+    else if (!user.isCountryValid()) {formError(res, user, "Invalid country");}
     else {
         dbquery.addUser(user.userData(), user.userDBString())
         res.render('pages/register_success');
@@ -76,16 +76,36 @@ app.get('/admin',function(req,res){
     return res.render('pages/admin', {message: ""});
 })
 
-
+/**
+ * handle admin login
+ * function to pass to db query to be called when query is complete
+ * @param response {Response}
+ * @param request {Request}
+ * @param results
+ */
 function adminResponse(response, request, results) {
-    let redirect =
+    let userExists = false;
     Object.keys(results).forEach(function(key) {
         let row = results[key];
         if (row.uname === request.body.user && row.pass === request.body.pass) {
-            return response.render('pages/display_users')
+            userExists = true;
         }
     });
-    if (!response.headersSent)
+    if (userExists)
+        dbquery.getTable(response, request, usersResponse);
+    else
         return response.render('pages/admin', {message: "Invalid username or password"});
+}
+
+/**
+ * handle table display page
+ * function to pass to db query to be called when query is complete
+ * @param response {Response}
+ * @param request {Request}
+ * @param results
+ */
+function usersResponse(response, request, results) {
+    let data = results.sort((a, b) => (a.unix_time.getTime() < b.unix_time.getTime()) ? 1: -1);
+    return response.render('pages/display_users', {data: data});
 }
 
