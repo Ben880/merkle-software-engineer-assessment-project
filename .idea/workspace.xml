@@ -24,6 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="51d52c93-5edd-4051-a543-16ba919fcb7a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +94,7 @@
       <workItem from="1629836029465" duration="32043000" />
       <workItem from="1629998767878" duration="19594000" />
       <workItem from="1630162876839" duration="11533000" />
-      <workItem from="1630218117548" duration="15428000" />
+      <workItem from="1630218117548" duration="17372000" />
     </task>
     <servers />
   </component>
@@ -113,10 +114,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="726" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1630249949791">
+    <state x="726" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1630283262092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="726" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1366.-284.1366.728@0.0.1920.1040" timestamp="1630003622973" />
+    <state x="726" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/-1366.-284.1366.728@0.0.1920.1040" timestamp="1630283262092" />
     <state x="726" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1630249949791" />
     <state x="690" y="300" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper" timestamp="1629837650014">
       <screen x="0" y="0" width="1920" height="1040" />
